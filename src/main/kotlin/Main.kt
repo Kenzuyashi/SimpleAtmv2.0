@@ -1,8 +1,8 @@
-import java.lang.Exception
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.system.exitProcess
 
 var islive :Boolean = false
 var name: String = ""
@@ -71,12 +71,12 @@ fun main() {
         islive = true
         ATM().showAccs()
         ATM().userLogin()
-    }else {
+    } else{
         ATM().userLogin()
     }
 }
 
-class ATM: Algorithm() {
+class ATM: Algo() {
     //main function
     fun userLogin() {
         try {
@@ -109,7 +109,6 @@ class ATM: Algorithm() {
             userLogin()
         }
     }
-
     // Operation functions
     private fun operation(ope: Any, user: Customer) {
         when (ope) {
@@ -143,7 +142,7 @@ class ATM: Algorithm() {
                 println("System close in 2sec")
                 Thread.sleep(2_000)
                 print("bye")
-                System.exit(0)
+                exitProcess(0)
             }
             else -> {
                 println("Invalid input!!")
@@ -155,7 +154,7 @@ class ATM: Algorithm() {
     }
 }
 
-open class Algorithm {
+open class Algo {
     //in addition, customer can choose to continue or exit
     fun additional(user: Customer) {
         println("Do you want another Operation? \nEnter 1: to continue. 2: to login again. 3: exit")
@@ -173,7 +172,7 @@ open class Algorithm {
                 println("System Close in 2 sec")
                 Thread.sleep(2_000)
                 println("bye")
-                System.exit(0)
+                exitProcess(0)
             }
             else -> {
                 println("Invalid input!!")
